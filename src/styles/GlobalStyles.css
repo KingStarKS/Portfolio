@@ -1,0 +1,822 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+/* === Base Styles === */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+.body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  overflow-y: auto;    /* Enable vertical scrolling */
+  overflow-x: hidden;  /* Prevent horizontal scroll */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Let content grow down */
+  transition: background-color 0.3s ease;
+  padding: 20px;
+}
+
+.main-circle {
+  width: 40rem;
+  height: 40rem;
+  border-radius: 100%;
+  background: linear-gradient(40deg, #FF0080, #FF8C00 70%);
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  transition: background 0.3s ease;
+}
+
+.content-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.king {
+  width: 80%;
+  padding: 20px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  position: relative;
+  z-index: 10;
+  border-radius: 10px;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.main-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+.box, .box-max {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  height: auto;
+  min-height: 150px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border 0.3s ease;
+}
+
+.box-max {
+  min-height: 180px;
+}
+
+.box:hover, .box-max:hover, .box-half:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.4);
+}
+
+.box-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.box-half {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  flex: 1 1 45%;
+  max-width: 48%;
+  min-width: 120px;
+  aspect-ratio: 1 / 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.box-half .phone {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+h3 {
+  color: #fff;
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+p {
+  color: #ddd;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* === Phone Switch === */
+.phone {
+  width: 100%;
+  max-width: 120px;
+  aspect-ratio: 1/1;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 35px rgba(0, 0, 0, .1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* LinkedIn special hover card */
+.box-half.linkedin {
+  position: relative;
+  overflow: hidden;
+  background-color: #0077b5; /* LinkedIn blue */
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition:
+    background 0.3s ease,
+    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  min-width: 150px;
+  min-height: 150px;
+}
+
+/* Large LinkedIn "In" logo by default */
+.linkedin-logo {
+  width: 80px;           /* Large size */
+  height: 80px;
+  fill: #ffffff;     /* Make sure it’s pure white */
+  color: #ffffff;            /* Pure white */
+  font-weight: 900;
+  transition: opacity 0.3s ease;
+  user-select: none;
+  z-index: 3;            /* Above video */
+  pointer-events: none;
+}
+
+/* Hide logo on hover */
+.box-half.linkedin:hover .linkedin-logo {
+  opacity: 0;
+}
+
+/* LinkedIn text, hidden initially */
+.linkedin-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  opacity: 0;           /* Hidden initially */
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 5;           /* Above video, above logo when hidden */
+  user-select: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Show text on hover */
+.box-half.linkedin:hover .linkedin-text {
+  opacity: 1;
+  pointer-events: none; /* No interaction needed */
+}
+
+/* Video background setup */
+.video-background {
+  position: absolute;
+  width: 190%;         /* Fill bigger area if needed */
+  height: 190%;
+  z-index: 1;          /* Behind everything except text */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Show video on hover */
+.box-half.linkedin:hover .video-background {
+  opacity: 1;
+}
+
+/* ==== GITHUB CARD ==== */
+.box-half.github {
+  position: relative;
+  overflow: hidden;
+  background-color: #171515; /* GitHub black */
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  min-width: 150px;
+  min-height: 150px;
+}
+
+/* GitHub logo big & white by default */
+.github-logo {
+  width: 70px;
+  height: 70px;
+  fill: white;
+  transition: opacity 0.3s ease;
+  user-select: none;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Hide logo on hover */
+.box-half.github:hover .github-logo {
+  opacity: 0;
+}
+
+/* GitHub text hidden initially */
+.github-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 4;
+  user-select: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Show text on hover */
+.box-half.github:hover .github-text {
+  opacity: 1;
+}
+
+/* Video background for GitHub */
+.box-half.github .video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.box-half.github .video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.box-half.github:hover .video-background {
+  opacity: 1;
+}
+
+.box-half.maps .maps-logo {
+  width: 70px;
+  height: 70px;
+  fill: white;
+  margin-bottom: 10px; /* space between icon and title */
+  user-select: none;
+  pointer-events: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+.content {
+  width: 100%;
+  padding: 10%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.circle {
+  position: relative;
+  border-radius: 50%;
+  width: 50%;
+  aspect-ratio: 1/1;
+  background: linear-gradient(40deg, #FF0080, #FF8C00 70%);
+  margin: auto;
+  transition: background 0.3s ease;
+}
+
+/*here is the mapppppp*/
+
+
+/* === MAPS CARD STYLES === */
+.box-half.maps {
+  position: relative;
+  overflow: hidden;
+  background: rgba(0, 123, 255, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.5s ease, z-index 0.3s ease, box-shadow 0.5s ease;
+  z-index: 1;
+
+  transform-origin: bottom left; /* <-- This makes expand & collapse smooth */
+}
+
+.box-half.maps:hover {
+  transform-origin: bottom left;      /* Fix bottom-left corner */
+  transform: scale(2.05) translateX(0);   /* No shift needed, origin handles it */
+  z-index: 10;
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.4);
+}
+
+/* ======= Profile Component Global CSS ======== */
+
+.content-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #111;
+  color: #fff;
+  padding: 1rem;
+}
+
+header h1.fluid {
+  font-size: 4vw;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  user-select: none;
+}
+
+main section:first-of-type {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.25rem;
+  position: relative;
+}
+
+.layer > div {
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.layer img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.scaler {
+  grid-column: span 6;
+  margin-top: 1rem;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.scaler img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  user-select: none;
+  pointer-events: none;
+}
+
+h2.fluid {
+  font-size: 10vw;
+  font-weight: 900;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #777;
+  font-size: 1.2rem;
+  user-select: none;
+  margin-top: 2rem;
+}
+
+.bear-link {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 10;
+  color: #fff;
+}
+
+
+.imacard-image-container {
+  position: relative;
+  border-radius: 4%; /* keep your existing border-radius */
+  overflow: hidden;
+  cursor: pointer;
+  height: 150px; /* same height as image */
+  width: 100%;   /* fill container width */
+  display: block;
+}
+
+.imacard-image-container .imacard-image {
+  display: block;
+  width: 100%;
+  height: 150px;
+  border-radius: 4%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Remove faded white overlay */
+.imacard-image-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent; /* changed to fully transparent */
+  opacity: 0; /* keep hidden */
+  border-radius: 4%;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* "Profile" text overlay - bigger and fully visible on hover */
+.imacard-image-container::before {
+  content: "Profile";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: transparent;
+  -webkit-text-stroke: 2px white; /* thicker stroke */
+  font-weight: 900;
+  font-size: 2.5rem; /* bigger text */
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 2;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.imacard-image-container:hover::after {
+  opacity: 0; /* no background fade */
+}
+
+.imacard-image-container:hover::before {
+  opacity: 1;
+}
+
+/* Slight zoom on hover */
+.imacard-image-container:hover .imacard-image {
+  transform: scale(1.05);
+}
+
+
+/*
+.imacard-image {
+  display: block;
+  width:100%;
+  height: 150px;  
+  border-radius: 4%;
+  object-fit: cover;
+}
+/*/
+/* === Globe container === */
+/* .globe-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; 
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; 
+} */
+/* 
+/* Simple globe placeholder */
+/* .globe {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #00bfff 0%, #0052cc 100%);
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.2);
+  transition: transform 0.5s ease;
+} */ 
+
+/* .box-half.maps:hover .globe {
+  transform: scale(1.1);
+} */
+
+/* === Zoom buttons ===
+.zoom-btn {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 35px;
+  cursor: pointer;
+  z-index: 2;
+  backdrop-filter: blur(5px);
+  transition: background 0.3s ease;
+  pointer-events: auto; /* Let user hover/click if needed */
+/* } */
+/* 
+.zoom-btn:hover {
+  background: rgba(255,255,255,0.3);
+} */
+
+/* Position top-right and bottom-left */
+/* .zoom-in {
+  top: 10px;
+  right: 10px;
+}
+
+.zoom-out {
+  bottom: 10px;
+  left: 10px;
+} */ */
+
+/* Keep your existing logo inside maps visible above globe */
+.box-half.maps .maps-logo {
+  position: relative;
+  z-index: 3;
+  transition: opacity 0.3s ease;
+}
+
+.box-half.maps:hover .maps-logo {
+  opacity: 0.2; /* Fades when globe shows */
+}
+
+/* Optional: keep title visible above globe */
+.box-half.maps h3 {
+  position: relative;
+  z-index: 3;
+  color: white;
+  margin-top: 10px;
+}
+
+
+
+
+.crescent {
+  position: absolute;
+  border-radius: 50%;
+  right: 0;
+  width: 60%;
+  height: 60%;
+  background: white;
+  transform: scale(0);
+  transform-origin: top right;
+  transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.6s ease;
+}
+
+/* Moon glow: soft, spread-out glow */
+[type="checkbox"]:checked + .app .crescent {
+  transform: scale(1);
+  background: #26242E;
+  box-shadow:
+    0 0 60px 30px rgba(255, 255, 255, 0.05),
+    0 0 120px 60px rgba(255, 255, 255, 0.03);
+}
+
+label {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 2rem;
+  margin: 1rem auto 0;
+  border-radius: 100px;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.toggle {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background: #fff;
+  border-radius: 100px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.names {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 70%;
+  font-weight: bold;
+  padding: 0 10%;
+  user-select: none;
+}
+
+.dark { opacity: 0.5; }
+.light { opacity: 1; }
+
+[type="checkbox"] { display: none; }
+
+/* === Dark Mode Switch === */
+[type="checkbox"]:checked + .app .toggle {
+  transform: translateX(100%);
+  background: #34323D;
+}
+
+[type="checkbox"]:checked + .app .dark {
+  opacity: 1;
+}
+
+[type="checkbox"]:checked + .app .light {
+  opacity: 0.5;
+}
+
+[type="checkbox"]:checked + .app .circle,
+[type="checkbox"]:checked + .app .main-circle {
+  background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);
+}
+
+[type="checkbox"]:checked + .app .body {
+  background-color: #26242E;
+  color: white;
+}
+
+[type="checkbox"]:checked + .app .king {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+[type="checkbox"]:checked + .app .main-grid,
+[type="checkbox"]:checked + .app .box,
+[type="checkbox"]:checked + .app .box-max,
+[type="checkbox"]:checked + .app .box-half {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .main-circle {
+    width: 30rem;
+    height: 30rem;
+    transform: translate(-50%, -50%);
+  }
+  .king {
+    width: 90%;
+    padding: 15px;
+  }
+  .main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  .column {
+    flex: none;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-circle {
+    width: 20rem;
+    height: 20rem;
+    transform: translate(-50%, -40%);
+  }
+  .king {
+    width: 95%;
+    padding: 10px;
+  }
+  .main-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .column {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .box, .box-max {
+    height: auto;
+    padding: 15px;
+  }
+  .box-row {
+    flex-wrap: wrap;
+  }
+  .box-half {
+    flex: 1 1 100%;
+    max-width: 100%;
+    aspect-ratio: auto;
+  }
+  .phone {
+    max-width: 80px;
+  }
+  .names {
+    font-size: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  h3 {
+    font-size: 1rem;
+  }
+  p {
+    font-size: 0.8rem;
+  }
+  .main-circle {
+    width: 15rem;
+    height: 15rem;
+    transform: translate(-50%, -30%);
+  }
+  .phone {
+    max-width: 60px;
+  }
+  .names {
+    font-size: 50%;
+  }
+}
