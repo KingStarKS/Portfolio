@@ -9,13 +9,13 @@ const boxesData = [
   { title: "Profile", description: "" },
   { title: "LinkedIn", description: "" },
   { title: "GitHub", description: "" },
-  { title: "Project 1", description: "" },
-  { title: "Project 2", description: "" },
+  { title: "Resume", description: "" },           // Project 1 → Resume
+  { title: "About Me", description: "" },         // Project 2 → About Me
   { title: "Project 3", description: "" },
   { title: "Live Map", description: "" },
   { title: "Switch", description: "" },
-  { title: "Project 4", description: "" },
-  { title: "Project 5", description: "" },
+  { title: "Skills", description: "" },           // Project 4 → Skills
+  { title: "Projects Live Demo", description: "" } // Project 5 → Live Demo
 ];
 
 const MainContent = ({ darkMode, toggleDarkMode }) => {
@@ -59,39 +59,33 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
             <div className="main-grid">
               <div className="column">
 
-              {/* Profile card */}
-<Link
-  to="/profile"
-  style={{ textDecoration: 'none', color: 'inherit', display: 'contents' }}
->
-  <div className="box box-max" style={{ cursor: 'pointer' }}>
-    <div className="imacard-image-container">
-      <img
-        src="/king1.jpg"
-        alt="Kuldeep Singh"
-        className="imacard-image"
-      />
-    </div>
-    {/* Other content like title or description can go here */}
-  </div>
-</Link>
+                {/* Profile card */}
+                <Link
+                  to="/profile"
+                  style={{ textDecoration: 'none', color: 'inherit', display: 'contents' }}
+                >
+                  <div className="box box-max" style={{ cursor: 'pointer' }}>
+                    <div className="imacard-image-container">
+                      <img
+                        src="/king1.jpg"
+                        alt="Kuldeep Singh"
+                        className="imacard-image"
+                      />
+                    </div>
+                  </div>
+                </Link>
 
-
-                 <div className="box-row">
-                  {/* LinkedIn with tilt effect and icon */}
+                <div className="box-row">
+                  {/* LinkedIn with tilt effect */}
                   <div
                     className="box-half linkedin"
                     onClick={() => window.open('https://www.linkedin.com/in/kuldeepsingh0028/', '_blank')}
                     onMouseMove={handleTilt}
                     onMouseLeave={resetTilt}
                   >
-                      {/* Place the video here */}
-  
-  <video className="video-background" autoPlay loop muted playsInline >
-    <source src="/v.mp4" type="video/mp4" />
-    
-  </video>
-
+                    <video className="video-background" autoPlay loop muted playsInline>
+                      <source src="/v.mp4" type="video/mp4" />
+                    </video>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 448 512"
@@ -111,10 +105,9 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                       />
                     </svg>
                     <div className="linkedin-text">LinkedIn</div>
-                    {/* <h3>{column1[1].title}</h3> */}
                   </div>
 
-                  {/* GitHub card with same effect, no tilt */}
+                  {/* GitHub */}
                   <div
                     className="box-half github"
                     onClick={() => window.open('https://github.com/KingStarKS', '_blank')}
@@ -122,10 +115,8 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                     <div className="video-background">
                       <video autoPlay loop muted playsInline>
                         <source src="/n.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
                       </video>
                     </div>
-
                     <svg
                       className="github-logo"
                       xmlns="http://www.w3.org/2000/svg"
@@ -147,23 +138,32 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                         21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"
                       />
                     </svg>
-
                     <div className="github-text">GitHub</div>
                   </div>
                 </div>
 
+                {/* Resume */}
                 <div className="box">
                   <h3>{column1[3].title}</h3>
+                  <button onClick={() => window.open('/Resume.pdf', '_blank')}>
+                    View Resume
+                  </button>
                 </div>
 
+                {/* About Me */}
                 <div className="box box-max">
                   <h3>{column1[4].title}</h3>
+                  <Link to="/about">About Me</Link>
                 </div>
               </div>
 
               <div className="column">
+                {/* Projects Live Demo */}
                 <div className="box box-max">
                   <h3>{column2[4].title}</h3>
+                  <button onClick={() => window.open('https://yourlivedemo.com', '_blank')}>
+                    See Live Demo
+                  </button>
                 </div>
 
                 <div className="box">
@@ -171,37 +171,33 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                 </div>
 
                 <div className="box-row">
- <div
-  className="box-half maps"
-  onClick={(e) => e.stopPropagation()}
-  onDoubleClick={() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const url = `https://www.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}`;
-          window.open(url, '_blank');
-        },
-        () => alert('Unable to retrieve your location')
-      );
-    } else {
-      alert('Geolocation is not supported by your browser');
-    }
-  }}
->
-  <GlobeComponent
-    width="400"
-    height="400"
-    markers={[
-      { lat: 43.7315, lng: -79.7624, label: 'Brampton' },
-       { lat: 31.6340, lng: 74.8723, label: 'Amritsar' }, 
-    ]}
-  />
-</div>
+                  <div
+                    className="box-half maps"
+                    onDoubleClick={() => {
+                      if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                          (position) => {
+                            const url = `https://www.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}`;
+                            window.open(url, '_blank');
+                          },
+                          () => alert('Unable to retrieve your location')
+                        );
+                      } else {
+                        alert('Geolocation is not supported by your browser');
+                      }
+                    }}
+                  >
+                    <GlobeComponent
+                      width="400"
+                      height="400"
+                      markers={[
+                        { lat: 43.7315, lng: -79.7624, label: 'Brampton' },
+                        { lat: 31.6340, lng: 74.8723, label: 'Amritsar' },
+                      ]}
+                    />
+                  </div>
 
-
-
-
-
+                  {/* Switch */}
                   <div className="box-half">
                     <div className="phone">
                       <div className="content">
@@ -221,8 +217,10 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                   </div>
                 </div>
 
+                {/* Skills */}
                 <div className="box box-max">
                   <h3>{column2[0].title}</h3>
+                  <Link to="/skills">Skills</Link>
                 </div>
               </div>
             </div>
