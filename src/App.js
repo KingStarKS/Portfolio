@@ -5,13 +5,12 @@ import GlobalStyles from './styles/GlobalStyles';
 import Navbar from './components/Navbar';
 import MainContent from './components/MainContent';
 import Profile from './components/Profile';
+import Skills from './components/Skills'; // ✅ 1. Import your Skills component
 
-// This handles routing and dark mode globally
 function AppContent() {
   const [darkMode, setDarkMode] = useState(false);
   const location = useLocation();
 
-  // Load darkMode state from localStorage when the app loads
   useEffect(() => {
     const saved = localStorage.getItem('darkMode');
     if (saved !== null) {
@@ -19,12 +18,10 @@ function AppContent() {
     }
   }, []);
 
-  // Save darkMode to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
   }, [darkMode]);
 
-  // Handler to toggle dark mode
   const toggleDarkMode = () => {
     setDarkMode(prev => !prev);
   };
@@ -39,6 +36,8 @@ function AppContent() {
           element={<MainContent darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
         />
         <Route path="/profile" element={<Profile darkMode={darkMode} />} />
+        <Route path="/skills" element={<Skills darkMode={darkMode} />} /> 
+        {/* ✅ 2. Add the Skills route here */}
       </Routes>
     </>
   );

@@ -544,6 +544,109 @@ footer {
   transform: scale(1.05);
 }
 
+/* === Fully clickable fixed-size LINK === */
+.box-link {
+  display: inline-block;
+  width: 400px;
+  height: 150px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* === Fixed-size CARD === */
+.boxl {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boxl:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.4);
+}
+
+/* === Terminal Loader inside the card === */
+.boxl .terminal-loader {
+  border: 0.1em solid #333;
+  background-color: #1a1a1a;
+  color: #0f0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.boxl .terminal-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5em;
+  background-color: #333;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 0 0.4em;
+}
+
+.boxl .terminal-controls {
+  float: right;
+}
+
+.boxl .control {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-left: 0.4em;
+  border-radius: 50%;
+  background-color: #777;
+}
+.boxl .control.close { background-color: #e33; }
+.boxl .control.minimize { background-color: #ee0; }
+.boxl .control.maximize { background-color: #0b0; }
+
+.boxl .terminal-title {
+  float: left;
+  line-height: 1.5em;
+  color: #eee;
+  font-size: 0.75rem;
+}
+
+.boxl .text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.2em solid green;
+  animation:
+    typeAndDelete 4s steps(11) infinite,
+    blinkCursor 0.5s step-end infinite alternate;
+  margin-top: 1.8em;
+  font-size: 1.4rem;
+}
+
+/* Typing animation keyframes */
+@keyframes blinkCursor {
+  50% { border-right-color: transparent; }
+}
+@keyframes typeAndDelete {
+  0%, 10% { width: 0; }
+  45%, 55% { width: 6.2em; }
+  90%, 100% { width: 0; }
+}
 
 /*
 .imacard-image {

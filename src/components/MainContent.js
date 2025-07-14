@@ -165,10 +165,26 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                     See Live Demo
                   </button>
                 </div>
+<Link to="/skills" className="box-link">
+  <div className="boxl">
+  
 
-                <div className="box">
-                  <h3>{column2[3].title}</h3>
-                </div>
+    <div className="terminal-loader">
+      <div className="terminal-header">
+        <div className="terminal-title">Status</div>
+        <div className="terminal-controls">
+          <div className="control close"></div>
+          <div className="control minimize"></div>
+          <div className="control maximize"></div>
+        </div>
+      </div>
+      <div className="text">SKILLS...</div>
+    </div>
+  </div>
+</Link>
+
+
+
 
                 <div className="box-row">
                   <div
@@ -217,10 +233,9 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                   </div>
                 </div>
 
-                {/* Skills */}
+              
                 <div className="box box-max">
                   <h3>{column2[0].title}</h3>
-                  <Link to="/skills">Skills</Link>
                 </div>
               </div>
             </div>
