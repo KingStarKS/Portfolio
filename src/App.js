@@ -5,7 +5,8 @@ import GlobalStyles from './styles/GlobalStyles';
 import Navbar from './components/Navbar';
 import MainContent from './components/MainContent';
 import Profile from './components/Profile';
-import Skills from './components/Skills'; // ✅ 1. Import your Skills component
+import Skills from './components/Skills'; 
+import Resume from './components/Resume'; // ✅ 1. Import your Resume component
 
 function AppContent() {
   const [darkMode, setDarkMode] = useState(false);
@@ -36,8 +37,8 @@ function AppContent() {
           element={<MainContent darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
         />
         <Route path="/profile" element={<Profile darkMode={darkMode} />} />
-        <Route path="/skills" element={<Skills darkMode={darkMode} />} /> 
-        {/* ✅ 2. Add the Skills route here */}
+        <Route path="/skills" element={<Skills darkMode={darkMode} />} />
+        <Route path="/resume" element={<Resume darkMode={darkMode} />} /> {/* ✅ 2. Add Resume route */}
       </Routes>
     </>
   );

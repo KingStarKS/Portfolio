@@ -638,6 +638,153 @@ footer {
   font-size: 1.4rem;
 }
 
+
+ @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+
+      --white: #e7e6e6;
+
+      background-color: var(--white);
+      background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+      overflow-x: hidden; /* prevent horizontal scroll from ghost */
+    }
+
+    /* Container acting like card */
+    .container {
+      /* width: auto; */
+      max-width: 450px;
+      height: 120px;
+      position: relative;
+      background: rgba(255 255 255 / 0.85);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* Title text */
+    .title {
+      position: absolute;
+      top: 50%;
+      right: 10%;
+      transform: translateY(-53%);
+      /* width: 2%; */
+    }
+
+    .title h1 {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 900;
+      color: black;
+      text-align: right;
+      font-size: clamp(0.1px, 10vw, 4rem);
+      user-select: none;
+      line-height: 1;
+    }
+
+    /* Ghost styling */
+    .ghost {
+      width: 3vmin;
+      height: 5vmin;
+      background-color: var(--white);
+      background-image:
+        radial-gradient(ellipse at 35% 40%, #000 8%, transparent 0%),
+        radial-gradient(ellipse at 65% 40%, #000 8%, transparent 0%),
+        radial-gradient(ellipse at 50% 60%, #000 8%, transparent 0%);
+      border-radius: 100% / 70% 70% 0% 0%;
+      position: absolute;
+      top: 50%;
+      left: 110%; /* start offscreen right */
+      transform: translateY(-50%);
+      opacity: 0.9;
+      mix-blend-mode: exclusion;
+      animation: ghostMove 8s linear infinite;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    @keyframes ghostMove {
+      0% {
+        left: 110%;
+      }
+      100% {
+        left: -10%;
+      }
+    }
+
+    /* Ghost tail */
+    .ghost div {
+      position: absolute;
+      width: 20%;
+      background-color: var(--white);
+      background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+    }
+
+    .ghost div:nth-of-type(1) {
+      height: 7vmin;
+      left: 0;
+      bottom: -6vmin;
+      border-radius: 100% / 0% 0% 50% 50%;
+    }
+
+    .ghost div:nth-of-type(2),
+    .ghost div:nth-of-type(4) {
+      height: 4vmin;
+      left: 20%;
+      bottom: -3vmin;
+      border-radius: 100% / 50% 50% 0% 0%;
+      background-color: transparent;
+    }
+
+    .ghost div:nth-of-type(3) {
+      height: 4vmin;
+      left: 40%;
+      bottom: -3.95vmin;
+      border-radius: 100% / 0% 0% 60% 60%;
+    }
+
+    .ghost div:nth-of-type(4) {
+      left: 60%;
+    }
+
+    .ghost div:nth-of-type(5) {
+      height: 3vmin;
+      left: 80%;
+      bottom: -2.9vmin;
+      border-radius: 100% / 0% 0% 70% 70%;
+    }
+
+    /* Responsive ghost sizing */
+    @media (max-width: 1200px) {
+      .ghost {
+        width: 6vmin;
+        height: 9vmin;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .ghost {
+        width: 5.5vmin;
+        height: 8vmin;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ghost {
+        width: 3vmin;
+        height: 4vmin;
+      }
+    }
+
+
 /* Typing animation keyframes */
 @keyframes blinkCursor {
   50% { border-right-color: transparent; }

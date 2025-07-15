@@ -5,6 +5,7 @@ import '../styles/GlobalStyles.css';
 import { Link } from 'react-router-dom';
 import GlobeComponent from './GlobeComponent';
 
+
 const boxesData = [
   { title: "Profile", description: "" },
   { title: "LinkedIn", description: "" },
@@ -142,13 +143,25 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                   </div>
                 </div>
 
-                {/* Resume */}
-                <div className="box">
-                  <h3>{column1[3].title}</h3>
-                  <button onClick={() => window.open('/Resume.pdf', '_blank')}>
-                    View Resume
-                  </button>
-                </div>
+             <Link
+  to="/resume"
+  className="box"
+  style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
+>
+  <div className="container">
+    <div className="title">
+      <h1>RESUME</h1>
+    </div>
+    <div className="ghost">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</Link>
+
 
                 {/* About Me */}
                 <div className="box box-max">
