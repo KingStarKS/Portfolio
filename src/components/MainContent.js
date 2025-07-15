@@ -178,6 +178,7 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                     See Live Demo
                   </button>
                 </div>
+
 <Link to="/skills" className="box-link">
   <div className="boxl">
   
@@ -247,9 +248,12 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                 </div>
 
               
-                <div className="box box-max">
-                  <h3>{column2[0].title}</h3>
-                </div>
+                <Link to="/contact" style={{ textDecoration: 'none', color: 'inherit' }}>
+  <div className="contact-box">
+     <div className="contact-label">CONTACT</div>
+  </div>
+</Link>
+
               </div>
             </div>
           </div>

@@ -638,6 +638,70 @@ footer {
   font-size: 1.4rem;
 }
 
+.contact-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  
+  min-width: 400px;    
+  max-width: 100%;     
+  width: 100%;         
+  
+  text-align: center;
+  height: auto;
+  min-height: 180px;
+  padding: 20px;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border 0.3s ease;
+}
+
+.contact-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.4);
+}
+.contact-label {
+  color: #000;
+  font-weight: bold;
+  background-color: cornflowerblue;
+  height: auto;
+ font-size: large;
+ 
+
+}
+
+ 
+ @media (max-width: 1024px) {
+  .contact-box {
+    min-width: 420px;
+    max-width: 600px;
+    
+  } 
+} 
+
+
+@media (max-width: 668px) {
+  .contact-box {
+    min-width: auto;
+    max-width: 80%;
+    padding: 15px;
+    
+  }
+  
+} 
+
+
+@media (max-width: 480px) { 
+.contact-box {
+    min-width: 160px;
+    max-width: 95%;
+    padding: 15px;
+    min-height:160px ;
+  }
+}
+
+
 
  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
 
@@ -675,8 +739,8 @@ footer {
     .title {
       position: absolute;
       top: 50%;
-      right: 10%;
-      transform: translateY(-53%);
+      right: 13%;
+      transform: translateY(-50%);
       /* width: 2%; */
     }
 
@@ -703,7 +767,7 @@ footer {
       position: absolute;
       top: 50%;
       left: 110%; /* start offscreen right */
-      transform: translateY(-50%);
+      transform: translateY(-50%) rotateZ(-90deg);
       opacity: 0.9;
       mix-blend-mode: exclusion;
       animation: ghostMove 8s linear infinite;
@@ -782,6 +846,9 @@ footer {
         width: 3vmin;
         height: 4vmin;
       }
+      .title h1 {
+    font-size: clamp(0.1px, 12vw, 1.5rem);
+  }
     }
 
 
@@ -795,76 +862,6 @@ footer {
   90%, 100% { width: 0; }
 }
 
-/*
-.imacard-image {
-  display: block;
-  width:100%;
-  height: 150px;  
-  border-radius: 4%;
-  object-fit: cover;
-}
-/*/
-/* === Globe container === */
-/* .globe-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0; 
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none; 
-} */
-/* 
-/* Simple globe placeholder */
-/* .globe {
-  width: 70%;
-  height: 70%;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, #00bfff 0%, #0052cc 100%);
-  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.2);
-  transition: transform 0.5s ease;
-} */ 
-
-/* .box-half.maps:hover .globe {
-  transform: scale(1.1);
-} */
-
-/* === Zoom buttons ===
-.zoom-btn {
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid #fff;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: center;
-  line-height: 35px;
-  cursor: pointer;
-  z-index: 2;
-  backdrop-filter: blur(5px);
-  transition: background 0.3s ease;
-  pointer-events: auto; /* Let user hover/click if needed */
-/* } */
-/* 
-.zoom-btn:hover {
-  background: rgba(255,255,255,0.3);
-} */
-
-/* Position top-right and bottom-left */
-/* .zoom-in {
-  top: 10px;
-  right: 10px;
-}
-
-.zoom-out {
-  bottom: 10px;
-  left: 10px;
-} */ */
 
 /* Keep your existing logo inside maps visible above globe */
 .box-half.maps .maps-logo {
@@ -1070,3 +1067,30 @@ label {
     font-size: 50%;
   }
 }
+/* 
+@media (max-width: 1024px) {
+  .box,
+  .box-max {
+    height: auto;
+    padding: 18px; 
+  }
+}
+
+
+@media (max-width: 768px) {
+  .box,
+  .box-max {
+    height: auto;
+    padding: 15px; 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .box,
+  .box-max {
+    height: auto;
+    width: 140px;
+    padding: 12px; 
+  }
+} */
