@@ -376,7 +376,13 @@ p {
   z-index: 10;
   box-shadow: 0 12px 42px rgba(0, 0, 0, 0.4);
 }
-
+@media (max-width: 480px) {
+  .box-half.maps {
+    height: 160px;
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+}
 /* ======= Profile Component Global CSS ======== */
 
 .content-wrap {
