@@ -713,11 +713,12 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: .4rem;
 }
 
 .card {
   width: 400px;
-  height: 175px;
+  height: 177px;
   background: #d3d3d3;
   display: flex;
   justify-content: center;
@@ -786,7 +787,7 @@ footer {
 /* Text styles */
 .text1 {
   position: absolute;
-  left: 20px;
+  /* left: 20px; */
   font-weight: bold;
   font-size: 1.2rem;
   opacity: 1;
@@ -817,6 +818,7 @@ footer {
   transform: translateX(0em);
   opacity: 1;
   transition-delay: 0.5s;
+  color: #fff;
 }
 /* Tablet (portrait & below 900px) */
 @media (max-width: 900px) {
