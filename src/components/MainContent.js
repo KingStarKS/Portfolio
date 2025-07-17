@@ -247,12 +247,23 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                   </div>
                 </div>
 
-              
-                <Link to="/contact" style={{ textDecoration: 'none', color: 'inherit' }}>
-  <div className="contact-box">
-     <div className="contact-label">CONTACT</div>
-  </div>
-</Link>
+              {/*Contact */}
+             <Link to="/contact" className="card-link">
+      <div className="card">
+        <p className="text1">HERE</p>
+        <div className="one">
+          <div className="two">
+            <div className="three">
+              <div className="four">
+                <div className="five">
+                  <p className="text2">CONTACT</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
 
               </div>
             </div>
