@@ -8,6 +8,7 @@ import Profile from './components/Profile';
 import Skills from './components/Skills';
 import Resume from './components/Resume';
 import Contact from './components/Contact'; // ✅ New import
+import AboutMe from './components/AboutMe';
 
 function AppContent() {
   const [darkMode, setDarkMode] = useState(false);
@@ -41,6 +42,7 @@ function AppContent() {
         <Route path="/skills" element={<Skills darkMode={darkMode} />} />
         <Route path="/resume" element={<Resume darkMode={darkMode} />} />
         <Route path="/contact" element={<Contact darkMode={darkMode} />} /> {/* ✅ New route */}
+        <Route path="/about" element={<AboutMe darkMode={darkMode} />} /> {/* ✅ New route */}
       </Routes>
     </>
   );

@@ -12,55 +12,56 @@ export default function Skills() {
   const [selectedSkill, setSelectedSkill] = useState(null);
   const [terminalClicked, setTerminalClicked] = useState(false);
 
-  const skillCategories = [
-    {
-      id: 1,
-      title: 'Backend',
-      details: [
-        { name: 'Node.js (Express, NestJS)', img: '/skills/nodejs.png' },
-        { name: 'Java Spring Boot', img: '/skills/springboot.png' },
-        { name: 'Python Django / Flask', img: '/skills/python.png' },
-        { name: 'Databases: MySQL, MongoDB, PostgreSQL', img: '/skills/database.png' },
-        { name: 'REST & GraphQL APIs', img: '/skills/api.png' },
-        { name: 'Docker & Kubernetes', img: '/skills/docker.png' },
-      ],
-    },
-    {
-      id: 2,
-      title: 'Frontend',
-      details: [
-        { name: 'React.js, Redux', img: '/skills/react.png' },
-        { name: 'Vue.js', img: '/skills/vue.png' },
-        { name: 'HTML5, CSS3, Sass', img: '/skills/htmlcss.png' },
-        { name: 'TypeScript & JavaScript', img: '/skills/typescript.png' },
-        { name: 'Responsive Design', img: '/skills/responsive.png' },
-        { name: 'Testing (Jest, Cypress)', img: '/skills/testing.png' },
-      ],
-    },
-    {
-      id: 3,
-      title: 'DevOps & Tools',
-      details: [
-        { name: 'Git & GitHub', img: '/skills/git.png' },
-        { name: 'CI/CD (GitHub Actions, Jenkins)', img: '/skills/cicd.png' },
-        { name: 'AWS & Azure basics', img: '/skills/aws.png' },
-        { name: 'Linux CLI', img: '/skills/linux.png' },
-        { name: 'Docker Compose', img: '/skills/docker-compose.png' },
-        { name: 'Monitoring & Logging', img: '/skills/monitoring.png' },
-      ],
-    },
-    {
-      id: 4,
-      title: 'Others',
-      details: [
-        { name: 'Agile & Scrum Methodology', img: '/skills/agile.png' },
-        { name: 'TDD & BDD', img: '/skills/tdd.png' },
-        { name: 'Unit & Integration Testing', img: '/skills/testing.png' },
-        { name: 'REST API Design', img: '/skills/api.png' },
-        { name: 'Problem Solving & Algorithms', img: '/skills/algorithms.png' },
-      ],
-    },
-  ];
+ 
+const skillCategories = [
+  {
+    id: 1,
+    title: 'Backend',
+    details: [
+      { name: 'Node.js (Express, NestJS)', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+      { name: 'Java Spring Boot', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
+      { name: 'Python Django / Flask', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+      { name: 'Databases: MySQL, MongoDB, PostgreSQL', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' }, // MySQL example
+      { name: 'REST & GraphQL APIs', img: 'https://cdn-icons-png.flaticon.com/512/919/919825.png' }, // generic API icon from Flaticon
+      { name: 'Docker & Kubernetes', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Frontend',
+    details: [
+      { name: 'React.js, Redux', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+      { name: 'Vue.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+      { name: 'HTML5, CSS3, Sass', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' }, 
+      { name: 'TypeScript & JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+      { name: 'Responsive Design', img: 'https://cdn-icons-png.flaticon.com/512/992/992700.png' }, // generic responsive icon
+      { name: 'Testing (Jest, Cypress)', img: 'https://cdn-icons-png.flaticon.com/512/1046/1046875.png' }, // generic testing icon
+    ],
+  },
+  {
+    id: 3,
+    title: 'DevOps & Tools',
+    details: [
+      { name: 'Git & GitHub', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+      { name: 'CI/CD (GitHub Actions, Jenkins)', img: 'https://cdn-icons-png.flaticon.com/512/919/919836.png' }, // generic CI/CD icon
+      { name: 'AWS & Azure basics', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg' },
+      { name: 'Linux CLI', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' },
+      { name: 'Docker Compose', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+      { name: 'Monitoring & Logging', img: 'https://cdn-icons-png.flaticon.com/512/992/992651.png' }, // generic monitoring icon
+    ],
+  },
+  {
+    id: 4,
+    title: 'Others',
+    details: [
+      { name: 'Agile & Scrum Methodology', img: 'https://cdn-icons-png.flaticon.com/512/854/854878.png' }, // generic agile icon
+      { name: 'TDD & BDD', img: 'https://cdn-icons-png.flaticon.com/512/684/684908.png' }, // generic testing icon
+      { name: 'Unit & Integration Testing', img: 'https://cdn-icons-png.flaticon.com/512/1046/1046875.png' }, // generic testing icon
+      { name: 'REST API Design', img: 'https://cdn-icons-png.flaticon.com/512/919/919825.png' },
+      { name: 'Problem Solving & Algorithms', img: 'https://cdn-icons-png.flaticon.com/512/1040/1040236.png' }, // brain icon
+    ],
+  },
+];
 
   useEffect(() => {
     if (inputRef.current && stage !== 'done') {
@@ -794,50 +795,59 @@ export default function Skills() {
 }
 
 /* Responsive tweaks */
-@media (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 1024px) {
   .wrapper {
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 5rem; /* To avoid overlap with fixed header */
+    flex-direction: column;   /* stack vertically */
+    align-items: center;      /* center horizontally */
+    padding-top: 5rem;        /* space for header */
   }
 
   .terminal-container,
   .terminal-container.clicked {
-    width: 90vw;
-    max-width: none;
-    transform: none;
-    margin-bottom: 2rem;
-    height: 500px;
+    width: 90vw;              /* full-ish width */
+    max-width: 900px;
+    height: 400px;            /* shorter height to fit tablet */
+    margin-bottom: 1.5rem;    /* space below terminal */
+    transform: none;          /* no horizontal shift */
   }
 
   .cards-panel {
     width: 90vw;
-    margin-left: 0;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    opacity: 1 !important;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 1rem;
+    opacity: 1 !important; /* always visible */
     pointer-events: auto !important;
+    max-height: 440px;    /* optional scroll */
+    overflow-y: auto;
   }
-
   .header {
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
     max-width: 100%;
   }
+     .card {
+    padding: 1rem;
+    width:18rem;
+  }
 }
 
 @media (max-width: 600px) {
-  .header {
-    left: 1rem;
-    transform: none;
-    text-align: left;
-    width: auto;
+ .header {
+    position: fixed;
+    top: 6rem; /* ⬅ moved down by adding margin */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
     font-size: 1.4rem;
+    max-width: 100%;
   }
 
   .wrapper {
-    padding-top: 4rem;
+    padding-top: 9rem; /* give space below moved heading */
     height: auto;
     min-height: 100vh;
   }
@@ -850,10 +860,16 @@ export default function Skills() {
 
   .cards-panel {
     grid-template-columns: 1fr;
+     width: 90vw;
+    order: 2;
+      max-height: 440px;
+        overflow-y: auto;
+
   }
 
   .card {
     padding: 1rem;
+    width:20rem;
   }
 
   .card img {
@@ -864,6 +880,8 @@ export default function Skills() {
     font-size: 0.85rem;
   }
 }
+
+
 
 
       `}</style>

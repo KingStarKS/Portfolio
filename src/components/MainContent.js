@@ -164,10 +164,16 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
 
 
                 {/* About Me */}
+                <Link to="/about">
                 <div className="box box-max">
-                  <h3>{column1[4].title}</h3>
-                  <Link to="/about">About Me</Link>
+                 <div className="glitch-container">
+    <h3 className="glitch-layer">About Me</h3>
+    <h3 className="glitch-layer colored cyan">About Me</h3>
+    <h3 className="glitch-layer colored red">About Me</h3>
+  </div>
                 </div>
+
+                </Link>
               </div>
 
               <div className="column">
@@ -250,7 +256,7 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
               {/*Contact */}
              <Link to="/contact" className="card-link">
       <div className="card">
-        <p className="text1">HERE</p>
+        <p className="text1">CONTACT</p>
         <div className="one">
           <div className="two">
             <div className="three">

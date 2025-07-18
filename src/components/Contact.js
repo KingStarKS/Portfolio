@@ -3,7 +3,7 @@ import ContactForm from '../components/ContactForm';
 
 const Contact = () => {
   return (
-    <div>
+    <div style={{ height: '100vh', width: '100%' }} id="funky-wrapper">
       <ContactForm />
     </div>
   );

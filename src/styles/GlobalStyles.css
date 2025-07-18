@@ -1026,6 +1026,7 @@ footer {
 
     body {
       min-height: 100vh;
+      min-width: 100%;
       display: grid;
       place-items: center;
 
@@ -1033,7 +1034,7 @@ footer {
 
       background-color: var(--white);
       background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
-      overflow-x: hidden; /* prevent horizontal scroll from ghost */
+      overflow-x: hidden; 
     }
 
     /* Container acting like card */
@@ -1407,3 +1408,128 @@ label {
     padding: 12px; 
   }
 } */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+/* Glitch container for the "About Me" section */
+
+/* .box .box-man .glitch-container{
+  min-width: none;
+  min-height: auto;
+} */
+.glitch-container {
+  position: relative;
+  height: 145px;
+  width: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #000;
+  padding: 12px;
+  border-radius: 10px;
+  
+}
+
+/* Base layer */
+.glitch-layer {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin: 0;
+  position: absolute;
+  top: 45%;
+  
+  transform: translate(-50%, -50%);
+  animation: glitch1 2.5s infinite;
+  color: white;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Cyan glitch layer */
+.glitch-layer.colored.cyan {
+  color: #23c4a6;
+  animation: glitch2 2.5s infinite;
+  z-index: -1;
+}
+
+/* Red glitch layer */
+.glitch-layer.colored.red {
+  color: #ea4545;
+  animation: glitch3 2.5s infinite;
+  z-index: -2;
+}
+
+/* Keyframe Animations */
+@keyframes glitch1 {
+  0% { transform: none; opacity: 1; }
+  7% { transform: skew(-0.5deg, -0.9deg); opacity: 0.75; }
+  10% { transform: none; opacity: 1; }
+  30% { transform: skew(0.8deg, -0.1deg); opacity: 0.75; }
+  35% { transform: none; opacity: 1; }
+  55% { transform: skew(-1deg, 0.2deg); opacity: 0.75; }
+  75% { transform: skew(0.4deg, 1deg); opacity: 0.75; }
+  100% { transform: none; opacity: 1; }
+}
+
+@keyframes glitch2 {
+  0% { transform: none; opacity: 0.25; }
+  7% { transform: translate(-2px, -3px); opacity: 0.5; }
+  10% { transform: none; opacity: 0.25; }
+  30% { transform: translate(-5px, -2px); opacity: 0.5; }
+  35% { transform: none; opacity: 0.25; }
+  55% { transform: translate(-5px, -1px); opacity: 0.5; }
+  75% { transform: translate(-2px, -6px); opacity: 0.5; }
+  100% { transform: none; opacity: 0.25; }
+}
+
+@keyframes glitch3 {
+  0% { transform: none; opacity: 0.25; }
+  7% { transform: translate(2px, 3px); opacity: 0.5; }
+  10% { transform: none; opacity: 0.25; }
+  30% { transform: translate(5px, 2px); opacity: 0.5; }
+  35% { transform: none; opacity: 0.25; }
+  55% { transform: translate(5px, 1px); opacity: 0.5; }
+  75% { transform: translate(2px, 6px); opacity: 0.5; }
+  100% { transform: none; opacity: 0.25; }
+}
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .glitch-container {
+    width: 37vw;
+    height: 150px;
+    padding: 8px;
+  }
+
+  .glitch-layer {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .glitch-container {
+    width: 50vw;
+    height: 150px;
+  }
+
+  .glitch-layer {
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .glitch-container {
+    width: 49vw;
+    height: 150px;
+  }
+
+  .glitch-layer {
+    font-size: 1.15rem;
+    letter-spacing: 1.75px;
+  }
+}
