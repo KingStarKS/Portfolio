@@ -2,9 +2,10 @@ import React from 'react';
 import CoverLetter from './CoverLetter';
 
 const Resume = () => {
-  const handleDownload = () => {
-    window.open('/Resume.pdf', '_blank');
-  };
+ const handleDownload = () => {
+  const resumeUrl = `${process.env.PUBLIC_URL}/Resume.pdf`;
+  window.open(resumeUrl, '_blank');
+};
 
   return (
     <>

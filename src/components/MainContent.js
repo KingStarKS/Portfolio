@@ -67,11 +67,12 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                 >
                   <div className="box box-max" style={{ cursor: 'pointer' }}>
                     <div className="imacard-image-container">
-                      <img
-                        src="/king1.jpg"
+                      {/* <img
+                        src="/"
                         alt="Kuldeep Singh"
-                        className="imacard-image"
-                      />
+                        
+                      /> */}
+                      <img src={`${process.env.PUBLIC_URL}/king1.jpg`} className="imacard-image" alt="Kuldeep Singh"/>
                     </div>
                   </div>
                 </Link>
@@ -85,8 +86,9 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                     onMouseLeave={resetTilt}
                   >
                     <video className="video-background" autoPlay loop muted playsInline>
-                      <source src="/v.mp4" type="video/mp4" />
-                    </video>
+  <source src={`${process.env.PUBLIC_URL}/v.mp4`} type="video/mp4" />
+  
+</video>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 448 512"
@@ -115,8 +117,9 @@ const MainContent = ({ darkMode, toggleDarkMode }) => {
                   >
                     <div className="video-background">
                       <video autoPlay loop muted playsInline>
-                        <source src="/n.mp4" type="video/mp4" />
-                      </video>
+  <source src={`${process.env.PUBLIC_URL}/n.mp4`} type="video/mp4" />
+  
+</video>
                     </div>
                     <svg
                       className="github-logo"

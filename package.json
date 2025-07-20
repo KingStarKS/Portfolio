@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://KingStarKS.github.io/",
+  "homepage": "https://KingStarKS.github.io/Portfolio",
 
   "dependencies": {
     "@splinetool/react-spline": "^4.0.0",

@@ -33,24 +33,26 @@ function AppContent() {
     <>
       <GlobalStyles />
       <Navbar darkMode={darkMode} />
-      <Routes>
-        <Route
-          path="/"
-          element={<MainContent darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
-        />
-        <Route path="/profile" element={<Profile darkMode={darkMode} />} />
-        <Route path="/skills" element={<Skills darkMode={darkMode} />} />
-        <Route path="/resume" element={<Resume darkMode={darkMode} />} />
-        <Route path="/contact" element={<Contact darkMode={darkMode} />} /> {/* ✅ New route */}
-        <Route path="/about" element={<AboutMe darkMode={darkMode} />} /> {/* ✅ New route */}
-      </Routes>
+    
+  <Routes>
+    <Route
+      path="/"
+      element={<MainContent darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
+    />
+    <Route path="/profile" element={<Profile darkMode={darkMode} />} />
+    <Route path="/skills" element={<Skills darkMode={darkMode} />} />
+    <Route path="/resume" element={<Resume darkMode={darkMode} />} />
+    <Route path="/contact" element={<Contact darkMode={darkMode} />} />
+    <Route path="/about" element={<AboutMe darkMode={darkMode} />} />
+  </Routes>
+
     </>
   );
 }
 
 export default function App() {
   return (
-    <Router>
+     <Router basename="/Portfolio">
       <AppContent />
     </Router>
   );
